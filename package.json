@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "Local MCP server proxying Ethereum JSON-RPC (geth-mcp-proxy)",
-  "main": "src/mcpServer.js",
+  "main": "mcpServer.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node ./src/mcpServer.js",
-    "dev": "nodemon ./src/mcpServer.js"
+    "start": "node mcpServer.js",
+    "dev": "nodemon mcpServer.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.4.0",
