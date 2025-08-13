@@ -8,11 +8,16 @@ This project is a Node.js-based proxy server that bridges Ethereum JSON-RPC quer
 
 The proxy acts as an intermediary, handling requests to a Geth endpoint specified via environment variables. It registers tools for common Ethereum operations (e.g., querying block numbers, balances, transactions) as well as advanced admin and debug functions. Responses are formatted with both hexadecimal and decimal values where applicable for easier consumption. A generic passthrough tool (`ethCallRaw`) allows calling any unsupported RPC method.
 
+<img width="569" height="981" alt="screenshot_vscode_3" src="https://github.com/user-attachments/assets/57a6f36e-7b15-4c2c-aa32-d064e45600fc" />
+
+
 Key features include:
 - Zod schema validation for tool inputs.
 - Optional enabling of transaction broadcasting.
 - Support for MCP streaming and direct tool calls via HTTP.
 - A simple REST endpoint for quick block number queries.
+- 
+
 
 This setup ensures secure, rate-limited, and schema-validated access to Ethereum data, making it ideal for applications that need to interact with the blockchain without direct exposure to the Geth RPC.
 
@@ -25,6 +30,8 @@ This setup ensures secure, rate-limited, and schema-validated access to Ethereum
 - **Health and Discovery Endpoints**: MCP-compatible `/mcp` routes for initialization, tool listing, and health checks.
 - **Fallback Passthrough**: Use `ethCallRaw` for any JSON-RPC method not explicitly registered.
 - **Environment-Driven**: Configured via `.env` file for Geth URL and port.
+
+
 
 ## Installation
 
@@ -77,11 +84,15 @@ ALLOW_SEND_RAW_TX=0             # Optional: Set to 1 to enable transaction broad
    - **List Tools**: `POST /mcp` with `{ "method": "tools/list" }` – Returns a list of available tools with descriptions and schemas.
    - **Call Tool**: `POST /mcp` with `{ "method": "tools/call", "params": { "name": "toolName", "arguments": {} } }`.
    - Supports streaming for multi-message sessions via MCP transport.
+   - 
+<img width="571" height="1287" alt="screenshot_vscode_4" src="https://github.com/user-attachments/assets/0ba7b12b-df3a-421a-b8f9-269491c1427a" />
 
 3. **Simple REST Endpoint**:
    - `GET /blockNumber`: Returns the current block number in hex and decimal.
 
 4. **Shutdown**: Gracefully handles SIGINT/SIGTERM for clean shutdown.
+
+5. **Remember** to add the `mcp.json` params to your .vscode/ settings.json or mcp.json
 
 ## Available Tools
 
